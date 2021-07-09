@@ -22,7 +22,7 @@ export const singUp = async (req, res) => {
 
   const savedUser = await newUser.save()
   console.log(process.env.SECRET)
-  const token = jwt.sign({ id: savedUser._id }, process.env.SECRET, { expiresIgitn: 86400 })
+  const token = jwt.sign({ id: savedUser._id }, process.env.SECRET, { expiresIn: '8d' })
   res.status(200).json({ token })
 }
 
