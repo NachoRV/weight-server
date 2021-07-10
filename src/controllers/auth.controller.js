@@ -21,14 +21,12 @@ export const singUp = async (req, res) => {
   }
 
   const savedUser = await newUser.save()
-  console.log(process.env.SECRET)
   const token = jwt.sign({ id: savedUser._id }, process.env.SECRET, { expiresIn: '8d' })
   res.status(200).json({ token })
 }
 
 export const singIn = async (req, res) => {
   const userFound = await User.findOne({ email: req.body.email }).populate('roles')
-  console.log(userFound)
 
   if (!userFound) return res.status(400).json('User not found')
 

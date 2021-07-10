@@ -6,7 +6,11 @@ const weightSchema = new Schema({
   fat: Number,
   visceralFat: Number,
   muscle: Number,
-  date: Date
+  date: Date,
+  userId: {
+    ref: 'User',
+    type: Schema.Types.ObjectId
+  }
 },
 {
   timestamps: true,

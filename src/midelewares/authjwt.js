@@ -11,6 +11,7 @@ export const veriftToken = async (req, res, next) => {
     const decode = jwt.verify(token, process.env.SECRET)
     const user = await User.findById(decode.id, { password: 0 })
     req.userId = decode.id
+    console.log("req.userId", req.userId )
 
     if (!user) return res.status(403).json({ message: 'No user found' })
     next()

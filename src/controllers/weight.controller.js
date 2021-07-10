@@ -1,16 +1,24 @@
 import Weight from '../models/Weight.js'
+import fs from 'fs'
+const logger = fs.createWriteStream('log.txt', {
+  flags: 'a' // 'a' means appending (old data will be preserved)
+})
 
 export const createWeight = async (req, res) => {
-  console.log(req.body)
   const { date, fat, weight, visceralFat, muscle } = req.body
-
-  const newWeight = new Weight({ date, fat, weight, visceralFat, muscle })
-
+  const userId = req.userId
+  console.log('userId', req.userId)
+  const newWeight = new Weight({ date, fat, weight, visceralFat, muscle, userId })
   try {
     const saveWeighr = await newWeight.save()
+    logger.write("*******************************************\n")
+    logger.write(JSON.stringify(req.body)+ "\n")
     res.status(201).json(saveWeighr)
   } catch (e) {
-    res.status(400).json('error')
+    logger.write("*******************************************\n")
+    logger.write(JSON.stringify(e) + "\n")
+    logger.write(JSON.stringify(req.body)+ "\n")
+    res.status(400).json(e)
   }
 }
 export const getWeights = async (req, res) => {
