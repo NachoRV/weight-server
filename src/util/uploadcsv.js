@@ -1,6 +1,6 @@
 import csv from 'csv-parser'
 import fs from 'fs'
-import  fetch from 'node-fetch'
+import fetch from 'node-fetch'
 
 const csvFilePath = '/Users/irvb/Documents/code/peso/backend/src/util/peso.csv'
 
@@ -31,17 +31,19 @@ fs.createReadStream(csvFilePath)
     //     'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZThiMTMyM2JjODU0M2MxYzg5NDFhYSIsImlhdCI6MTYyNTg2MzMyNCwiZXhwIjoxNjI1OTQ5NzI0fQ.E8veH34EaliU_shzbv26XAJ68Un41Rj7sxetuI06yak' },
     // })
     // .then(res => res.json())
-    //.then(json => ´);
+    // .then(json => ´);
     /**
      * PRO
      */
-        fetch('https://weight-server.herokuapp.com/weights', {
-        method: 'POST',
-        body:    JSON.stringify({ dateAux, fat, weight, visceralFat, muscle }),
-        headers: { 'Content-Type': 'application/json',
-        'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZTg4NWEzMWUyOWZiMDAxNTVkZWQwNCIsImlhdCI6MTYyNTg2NTQ3OSwiZXhwIjoxNjI1OTUxODc5fQ.MqvVT1gSQwIe3lcYLiHdMFy4QkDmbVIu3qweKZs6us4' },
+    fetch('https://weight-server.herokuapp.com/weights', {
+      method: 'POST',
+      body: JSON.stringify({ dateAux, fat, weight, visceralFat, muscle }),
+      headers: {
+        'Content-Type': 'application/json',
+        'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZTg4NWEzMWUyOWZiMDAxNTVkZWQwNCIsImlhdCI6MTYyNTg2NTQ3OSwiZXhwIjoxNjI1OTUxODc5fQ.MqvVT1gSQwIe3lcYLiHdMFy4QkDmbVIu3qweKZs6us4'
+      }
     })
-    .then(res => res.json())
+      .then(res => res.json())
   })
   .on('end', () => {
     console.log('CSV file successfully processed')

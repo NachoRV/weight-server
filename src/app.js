@@ -4,8 +4,10 @@ import { createRole } from './libs/initialSetup.js'
 // Importando las rutas
 import weigthRoutes from './routes/weight.routes.js'
 import auth from './routes/auth.routes.js'
+import cors from 'cors'
 
 const app = express()
+app.use(cors())
 createRole()
 
 app.use(morgan('dev'))
