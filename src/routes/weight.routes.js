@@ -5,10 +5,10 @@ import { veriftToken } from '../midelewares/index.js'
 import { getWeightById, getWeights, updateWeightById, deleteWeightById, createWeight } from '../controllers/weight.controller.js'
 const router = Router()
 
-router.get('/', getWeights)
-router.get('/:weightId', getWeightById)
-router.post('/',veriftToken, createWeight)
-router.put('/:weightId', updateWeightById)
-router.delete('/:weightId', deleteWeightById)
+router.get('/', veriftToken, getWeights)
+router.get('/:weightId', veriftToken, getWeightById)
+router.post('/', veriftToken, createWeight)
+router.put('/:weightId', veriftToken, updateWeightById)
+router.delete('/:weightId', veriftToken, deleteWeightById)
 
 export default router

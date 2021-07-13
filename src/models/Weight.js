@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-const {Schema, model } = mongoose;
+import mongoose from 'mongoose'
+const { Schema, model } = mongoose
 
 const weightSchema = new Schema({
   weight: Number,
@@ -15,6 +15,6 @@ const weightSchema = new Schema({
 {
   timestamps: true,
   versionKey: false
-});
+})
 
-export default model('Weight', weightSchema )
+export default model('Weight', weightSchema)

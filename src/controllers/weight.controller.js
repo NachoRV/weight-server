@@ -11,13 +11,13 @@ export const createWeight = async (req, res) => {
   const newWeight = new Weight({ date, fat, weight, visceralFat, muscle, userId })
   try {
     const saveWeighr = await newWeight.save()
-    logger.write("*******************************************\n")
-    logger.write(JSON.stringify(req.body)+ "\n")
+    logger.write('*******************************************\n')
+    logger.write(JSON.stringify(req.body) + '\n')
     res.status(201).json(saveWeighr)
   } catch (e) {
-    logger.write("*******************************************\n")
-    logger.write(JSON.stringify(e) + "\n")
-    logger.write(JSON.stringify(req.body)+ "\n")
+    logger.write('*******************************************\n')
+    logger.write(JSON.stringify(e) + '\n')
+    logger.write(JSON.stringify(req.body) + '\n')
     res.status(400).json(e)
   }
 }

@@ -20,7 +20,8 @@ fs.createReadStream(csvFilePath)
     weight = weight.replace(',', '.')
     visceralFat = visceralFat.replace(',', '.')
     muscle = muscle.replace(',', '.')
-    data.push({ dateAux, fat, weight, visceralFat, muscle })
+    data.push({ date: dateAux, fat, weight, visceralFat, muscle })
+    console.log(data)
     /**
      * DEV
      */
@@ -37,10 +38,10 @@ fs.createReadStream(csvFilePath)
      */
     fetch('https://weight-server.herokuapp.com/weights', {
       method: 'POST',
-      body: JSON.stringify({ dateAux, fat, weight, visceralFat, muscle }),
+      body: JSON.stringify({ date: dateAux, fat, weight, visceralFat, muscle }),
       headers: {
         'Content-Type': 'application/json',
-        'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZTg4NWEzMWUyOWZiMDAxNTVkZWQwNCIsImlhdCI6MTYyNTg2NTQ3OSwiZXhwIjoxNjI1OTUxODc5fQ.MqvVT1gSQwIe3lcYLiHdMFy4QkDmbVIu3qweKZs6us4'
+        'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZTg4NWEzMWUyOWZiMDAxNTVkZWQwNCIsImlhdCI6MTYyNjIwODIzNywiZXhwIjoxNjI2Mjk0NjM3fQ.nV5IQJnqMsK3OBLQ-Agy2O7HviIaZa5ovZO9egY1spQ'
       }
     })
       .then(res => res.json())
